@@ -18,7 +18,7 @@ public class PortfolioServiceImpl implements PortfolioService {
     private PortfolioDao portfolioDao;
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Portfolio> listPortfolios() {
         return portfolioDao.listPortfolios();
     }
