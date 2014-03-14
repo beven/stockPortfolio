@@ -10,4 +10,6 @@ import java.util.List;
 public interface PortfolioService {
 
     List<Portfolio> listPortfolios();
+
+    void addPortfolio(Portfolio portfolio);
 }

@@ -13,6 +13,13 @@ public class Portfolio implements Serializable {
     private int id;
     private String name;
 
+    public Portfolio() {
+    }
+
+    public Portfolio(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)

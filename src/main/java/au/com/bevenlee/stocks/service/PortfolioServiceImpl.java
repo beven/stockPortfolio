@@ -22,4 +22,10 @@ public class PortfolioServiceImpl implements PortfolioService {
     public List<Portfolio> listPortfolios() {
         return portfolioDao.listPortfolios();
     }
+
+    @Override
+    @Transactional
+    public void addPortfolio(Portfolio portfolio) {
+        portfolioDao.addPortfolio(portfolio);
+    }
 }
