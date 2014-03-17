@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -20,27 +20,29 @@ import java.util.List;
 @Controller
 public class PortfolioController {
 
-    private static final String COMMAND_NAME = "portfolio-form";
+    private static final String COMMAND_NAME = "command";
     private static final String MODEL_NAME = "portfolios";
     private static final String VIEW_NAME = "portfolios";
 
     @Autowired
     private PortfolioService portfolioService;
 
-    @RequestMapping(value = "/portfolios")
+    @RequestMapping(value = "/portfolios", method = RequestMethod.GET)
     public ModelAndView listPortfolios() {
         List<Portfolio> portfolios = portfolioService.listPortfolios();
-        HashMap<String, Object> model = new HashMap<String, Object>();
-        model.put(MODEL_NAME, portfolios);
-        model.put(COMMAND_NAME, new PortfolioForm());
-        return new ModelAndView(VIEW_NAME, model);
+        ModelAndView modelAndView = new ModelAndView(VIEW_NAME);
+        modelAndView.addObject(MODEL_NAME, portfolios);
+        modelAndView.addObject(COMMAND_NAME, new PortfolioForm());
+        return modelAndView;
     }
 
     @RequestMapping(value = "/addPortfolio", method = RequestMethod.POST)
-    public String addPortfolio(@ModelAttribute(COMMAND_NAME) PortfolioForm portfolioForm, BindingResult result) {
-        String portfolioName = portfolioForm.getName();
-        Portfolio portfolio = new Portfolio(portfolioName);
-        portfolioService.addPortfolio(portfolio);
+    public String addPortfolio(@ModelAttribute(COMMAND_NAME) @Valid PortfolioForm portfolioForm, BindingResult result) {
+        if(!result.hasErrors()) {
+            String portfolioName = portfolioForm.getName();
+            Portfolio portfolio = new Portfolio(portfolioName);
+            portfolioService.addPortfolio(portfolio);
+        }
         return "redirect:" + VIEW_NAME;
     }
 }
