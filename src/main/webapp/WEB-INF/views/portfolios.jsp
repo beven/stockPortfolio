@@ -25,11 +25,11 @@
     </c:otherwise>
 </c:choose>
 <h2>Add Portfolio</h2>
-<form:form method="post" action="/addPortfolio">
+<form:form method="post" action="/portfolios" commandName="portfolioForm">
     <div>
-        <form:errors path="name" cssClass="error message" element="div" />
         <form:label path="name">Name</form:label><form:input path="name"/>
         <input value="Submit" type="submit"/>
+        <form:errors path="name" cssClass="error" element="div" />
     </div>
 </form:form>
 </body>

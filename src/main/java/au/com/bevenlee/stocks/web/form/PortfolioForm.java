@@ -9,8 +9,8 @@ import javax.validation.constraints.Size;
  */
 public class PortfolioForm {
 
-    @NotEmpty
-    @Size(min=1, max=50)
+    @NotEmpty()
+    @Size(min=3, max=30)
     private String name;
 
     public String getName() {
