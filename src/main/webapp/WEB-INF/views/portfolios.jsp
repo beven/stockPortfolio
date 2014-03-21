@@ -18,7 +18,7 @@
             </tr>
             <c:forEach var="portfolio" items="${portfolios}">
                 <tr>
-                    <td><c:out value="${portfolio.name}"/></td>
+                    <td><a href="/stocks"><c:out value="${portfolio.name}"/></a></td>
                 </tr>
             </c:forEach>
         </table>
