@@ -16,6 +16,11 @@ public class Portfolio implements Serializable {
     public Portfolio() {
     }
 
+    public Portfolio(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Portfolio(String name) {
         this.name = name;
     }

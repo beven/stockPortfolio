@@ -7,6 +7,15 @@
 </head>
 <body>
 <h1>Stocks</h1>
-
+<c:choose>
+    <c:when test="${empty stocks}">
+        There are no stocks configured for this portfolio.
+    </c:when>
+    <c:otherwise>
+        <c:forEach items="${stocks}" var="stock">
+            ${stock}
+        </c:forEach>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

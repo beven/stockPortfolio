@@ -11,8 +11,9 @@ import java.util.Date;
 @Table(name = "stock")
 public class Stock implements Serializable {
 
-    private int id;
+    public static final String PORTFOLIO_ID = "portfolioId";
 
+    private int id;
     private String symbol;
     private Date entryDate;
     private Date exitDate;

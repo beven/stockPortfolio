@@ -37,4 +37,9 @@ public class PortfolioDaoHibernateImpl implements PortfolioDao {
         List<Portfolio> portfolios = getCurrentSession().createQuery("FROM Portfolio").list();
         return portfolios;
     }
+
+    @Override
+    public Portfolio getPortfolioById(int id) {
+        return (Portfolio) getCurrentSession().get(Portfolio.class, id);
+    }
 }

@@ -28,4 +28,16 @@ public class PortfolioServiceImpl implements PortfolioService {
     public void addPortfolio(Portfolio portfolio) {
         portfolioDao.addPortfolio(portfolio);
     }
+
+    @Override
+    @Transactional
+    public void updatePortfolio(Portfolio portfolio) {
+        portfolioDao.updatePortfolio(portfolio);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Portfolio getPortfolioById(int id) {
+        return portfolioDao.getPortfolioById(id);
+    }
 }

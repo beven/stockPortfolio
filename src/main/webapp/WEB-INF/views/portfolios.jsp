@@ -18,14 +18,17 @@
             </tr>
             <c:forEach var="portfolio" items="${portfolios}">
                 <tr>
-                    <td><a href="/stocks"><c:out value="${portfolio.name}"/></a></td>
+                    <td>
+                        <a href="portfolios-edit?id=<c:out value="${portfolio.id}"/>"><c:out value="${portfolio.name}"/></a> -
+                        <a href="stocks?portfolioId=<c:out value="${portfolio.id}"/>">Add/Update stocks</a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
     </c:otherwise>
 </c:choose>
 <h2>Add Portfolio</h2>
-<form:form method="post" action="/portfolios" commandName="portfolioForm">
+<form:form method="post" action="/portfolios-add" commandName="portfolioForm">
     <div>
         <form:label path="name">Name</form:label><form:input path="name"/>
         <input value="Submit" type="submit"/>

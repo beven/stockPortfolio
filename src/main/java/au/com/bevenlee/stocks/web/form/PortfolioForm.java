@@ -12,6 +12,15 @@ public class PortfolioForm {
     @NotEmpty()
     @Size(min=3, max=30)
     private String name;
+    private int id;
+
+    public PortfolioForm() {
+    }
+
+    public PortfolioForm(int id, String name) {
+        this.name = name;
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -19,5 +28,13 @@ public class PortfolioForm {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -12,4 +12,8 @@ public interface PortfolioService {
     List<Portfolio> listPortfolios();
 
     void addPortfolio(Portfolio portfolio);
+
+    void updatePortfolio(Portfolio portfolio);
+
+    Portfolio getPortfolioById(int id);
 }

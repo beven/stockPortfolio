@@ -14,4 +14,6 @@ public interface PortfolioDao {
     void updatePortfolio(Portfolio portfolio);
 
     List<Portfolio> listPortfolios();
+
+    Portfolio getPortfolioById(int id);
 }

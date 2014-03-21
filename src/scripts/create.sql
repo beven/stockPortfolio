@@ -5,15 +5,15 @@ CREATE TABLE stocks.portfolio (
 ) ENGINE=INNODB;
 
 CREATE TABLE stocks.stock (
-  id INT NOT NULL auto_increment,
+  id INT NOT NULL,
   symbol VARCHAR(10) NOT NULL,
   entryDate DATE,
   exitDate DATE,
   costPrice DECIMAL,
   exitPrice DECIMAL,
   commission DECIMAL,
-  portfolioId INT,
-  PRIMARY KEY (id),
-  FOREIGN KEY (portfolioId) REFERENCES parent(id) ON DELETE  CASCADE
+  portfolioId INT NOT NULL,
+  INDEX portfolioId_index (portfolioId),
+  FOREIGN KEY (portfolioId) REFERENCES portfolio(id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
