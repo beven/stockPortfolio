@@ -2,7 +2,6 @@ package au.com.bevenlee.stocks.service;
 
 import au.com.bevenlee.stocks.dao.PortfolioDao;
 import au.com.bevenlee.stocks.model.Portfolio;
-import au.com.bevenlee.stocks.model.Stock;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,14 +46,10 @@ public class PortfolioServiceImpl implements PortfolioService {
     @Transactional(readOnly = true)
     public Portfolio getPortfolioWithStocksById(int id) {
         Portfolio portfolio = portfolioDao.getPortfolioById(id);
-        eagerLoadStocks(portfolio);
-        return portfolio;
-    }
-
-    private void eagerLoadStocks(Portfolio portfolio) {
-        List<Stock> stocks = portfolio.getStocks();
-        if(stocks != null) {
-            Hibernate.initialize(stocks);
+        if(portfolio != null) {
+            Hibernate.initialize(portfolio.getStocks());
+            return portfolio;
         }
+        return null;
     }
 }
