@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface StockDao {
 
-    List<Stock> getStocksByPortfolioId(int portfolioId);
+    Integer addStock(Stock stock);
 }

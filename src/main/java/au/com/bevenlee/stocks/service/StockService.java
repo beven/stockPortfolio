@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface StockService {
 
-    List<Stock> getStocksByPortfolioId(int portfolioId);
+    void addStock(Stock stock);
 }

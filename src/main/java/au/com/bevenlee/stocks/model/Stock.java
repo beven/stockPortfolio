@@ -1,6 +1,7 @@
 package au.com.bevenlee.stocks.model;
 
 import javax.persistence.*;
+import javax.sound.sampled.Port;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,6 +21,7 @@ public class Stock implements Serializable {
     private float purchasePrice;
     private float exitPrice;
     private float commission;
+    private Portfolio portfolio;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +43,7 @@ public class Stock implements Serializable {
         this.commission = commission;
     }
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "entryDate", unique = false, nullable = false)
     public Date getEntryDate() {
         return entryDate;
@@ -50,6 +53,7 @@ public class Stock implements Serializable {
         this.entryDate = entryDate;
     }
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "exitDate", unique = false, nullable = false)
     public Date getExitDate() {
         return exitDate;
@@ -85,4 +89,15 @@ public class Stock implements Serializable {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "portfolioId", nullable = false)
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
 }

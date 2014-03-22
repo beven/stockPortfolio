@@ -16,4 +16,6 @@ public interface PortfolioService {
     void updatePortfolio(Portfolio portfolio);
 
     Portfolio getPortfolioById(int id);
+
+    Portfolio getPortfolioWithStocksById(int id);
 }

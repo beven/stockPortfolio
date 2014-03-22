@@ -2,6 +2,7 @@ package au.com.bevenlee.stocks.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Beven on 13/03/14.
@@ -12,6 +13,7 @@ public class Portfolio implements Serializable {
 
     private int id;
     private String name;
+    private List<Stock> stocks;
 
     public Portfolio() {
     }
@@ -43,5 +45,14 @@ public class Portfolio implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "portfolio")
+    public List<Stock> getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(List<Stock> stocks) {
+        this.stocks = stocks;
     }
 }

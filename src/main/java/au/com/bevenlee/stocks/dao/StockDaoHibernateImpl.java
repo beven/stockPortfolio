@@ -20,10 +20,8 @@ public class StockDaoHibernateImpl implements StockDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Stock> getStocksByPortfolioId(int portfolioId) {
-        Criteria criteria = getCurrentSession().createCriteria(Stock.class);
-        criteria.add(Restrictions.eq(Stock.PORTFOLIO_ID, portfolioId));
-        return (List<Stock>) criteria.list();
+    public Integer addStock(Stock stock) {
+        return (Integer) getCurrentSession().save(stock);
     }
 
     private Session getCurrentSession(){

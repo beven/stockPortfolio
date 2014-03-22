@@ -1,6 +1,7 @@
 package au.com.bevenlee.stocks.config;
 
 import au.com.bevenlee.stocks.model.Portfolio;
+import au.com.bevenlee.stocks.model.Stock;
 import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +33,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(dataSource());
-        localSessionFactoryBean.setAnnotatedClasses(Portfolio.class);
+        localSessionFactoryBean.setAnnotatedClasses(Portfolio.class, Stock.class);
         localSessionFactoryBean.setHibernateProperties(hibernateProperties());
         return localSessionFactoryBean;
     }
