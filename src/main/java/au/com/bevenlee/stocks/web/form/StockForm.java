@@ -2,6 +2,7 @@ package au.com.bevenlee.stocks.web.form;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ public class StockForm {
     private float purchasePrice;
     private float exitPrice;
     private float commission;
-    @NotEmpty()
+    @NotNull()
     private int portfolioId;
 
     public StockForm() {
