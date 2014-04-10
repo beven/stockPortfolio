@@ -13,6 +13,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -46,7 +47,7 @@ public class StockController {
     }
 
     @RequestMapping(value = "/stocks", method = RequestMethod.POST)
-    public ModelAndView getStocks(@ModelAttribute(COMMAND_NAME) StockForm stockForm, BindingResult result) {
+    public ModelAndView getStocks(@ModelAttribute(COMMAND_NAME) @Valid StockForm stockForm, BindingResult result) {
         int portfolioId = stockForm.getPortfolioId();
         if(!result.hasErrors()) {
             Portfolio portfolioToUpdate = portfolioService.getPortfolioById(portfolioId);
