@@ -3,6 +3,8 @@ package au.com.bevenlee.stocks.web.controller;
 import au.com.bevenlee.stocks.model.Portfolio;
 import au.com.bevenlee.stocks.service.PortfolioService;
 import au.com.bevenlee.stocks.web.form.PortfolioForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -28,9 +30,11 @@ public class PortfolioController {
 
     @Autowired
     private PortfolioService portfolioService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PortfolioController.class);
 
     @RequestMapping(value = "/portfolios", method = RequestMethod.GET)
     public ModelAndView listPortfolios() {
+        LOGGER.debug("Entering PortfolioController portfolios page");
         ModelAndView modelAndView = getModelAndView(PORTFOLIO_LIST_VIEW_NAME);
         modelAndView.addObject(COMMAND_NAME, new PortfolioForm());
         return modelAndView;
